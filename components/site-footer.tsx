@@ -63,15 +63,15 @@ export function SiteFooter() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <Phone className="h-4 w-4 mt-0.5 text-primary" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground">0261159924 / 0553454225</span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="h-4 w-4 mt-0.5 text-primary" />
-                <span className="text-muted-foreground">info@ecoprints.com</span>
+                <span className="text-muted-foreground">ayishatuibrahim46@gmail.com</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 text-primary" />
-                <span className="text-muted-foreground">123 Print Street, City, ST 12345</span>
+                <span className="text-muted-foreground">Awoshie A'lang taxi rank</span>
               </li>
             </ul>
           </div>

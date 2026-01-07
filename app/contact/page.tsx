@@ -51,8 +51,8 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-semibold mb-1">Phone</h3>
-                          <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
-                          <p className="text-xs text-muted-foreground mt-1">Mon-Fri 9am-6pm EST</p>
+                          <p className="text-sm text-muted-foreground">0261159924 / 0553454225</p>
+                          <p className="text-xs text-muted-foreground mt-1">Mon-Fri 9am-6pm</p>
                         </div>
                       </div>
                     </CardContent>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <h3 className="font-semibold mb-1">Email</h3>
-                          <p className="text-sm text-muted-foreground">info@ecoprints.com</p>
+                          <p className="text-sm text-muted-foreground">ayishatuibrahim46@gmail.com</p>
                           <p className="text-xs text-muted-foreground mt-1">We'll respond within 24 hours</p>
                         </div>
                       </div>
@@ -80,9 +80,8 @@ export default function ContactPage() {
                           <MapPin className="h-5 w-5 text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-semibold mb-1">Address</h3>
-                          <p className="text-sm text-muted-foreground">123 Print Street</p>
-                          <p className="text-sm text-muted-foreground">City, ST 12345</p>
+                          <h3 className="font-semibold mb-1">Location</h3>
+                          <p className="text-sm text-muted-foreground">Awoshie A'lang taxi rank</p>
                         </div>
                       </div>
                     </CardContent>
