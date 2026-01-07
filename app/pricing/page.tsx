@@ -62,7 +62,7 @@ export default function PricingPage() {
     "High-quality materials",
     "Eco-friendly options",
     "Color accuracy guarantee",
-    "Free shipping on orders over $200",
+    "Free shipping on orders over GH₵200",
   ]
 
   return (
@@ -100,9 +100,9 @@ export default function PricingPage() {
                           <div className="text-sm text-muted-foreground mb-2">
                             {tier.quantity ? `${tier.quantity} units` : tier.size}
                           </div>
-                          <div className="text-3xl font-bold text-primary mb-2">${tier.price}</div>
+                          <div className="text-3xl font-bold text-primary mb-2">GH₵{tier.price}</div>
                           <div className="text-xs text-muted-foreground">
-                            {tier.quantity && `$${(tier.price / tier.quantity).toFixed(2)} per unit`}
+                            {tier.quantity && `GH₵${(tier.price / tier.quantity).toFixed(2)} per unit`}
                           </div>
                         </div>
                       ))}

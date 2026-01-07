@@ -14,8 +14,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
         o.*,
         c.name as customer_name,
         c.email as customer_email,
-        c.phone as customer_phone,
-        c.company as customer_company
+        c.phone as customer_phone
       FROM orders o
       LEFT JOIN customers c ON o.customer_id = c.id
       WHERE o.id = ${id}
@@ -53,35 +52,37 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 
     // Full update
     const {
-      customer_id,
       service_type,
       quantity,
-      paper_type,
-      size,
-      color_option,
-      finishing,
-      turnaround,
-      status,
-      total_amount,
       notes,
+      delivery_address,
       due_date,
+      total_amount,
+      file_url,
+      file_name,
+      file_size,
+      file_mime,
+      status,
+      payment_status,
+      payment_method
     } = body
 
     await sql`
       UPDATE orders 
       SET 
-        customer_id = ${customer_id},
         service_type = ${service_type},
         quantity = ${quantity},
-        paper_type = ${paper_type || null},
-        size = ${size || null},
-        color_option = ${color_option || null},
-        finishing = ${finishing || null},
-        turnaround = ${turnaround || null},
-        status = ${status},
-        total_amount = ${total_amount},
         notes = ${notes || null},
+        delivery_address = ${delivery_address || null},
         due_date = ${due_date || null},
+        total_amount = ${total_amount},
+        file_url = ${file_url},
+        file_name = ${file_name},
+        file_size = ${file_size},
+        file_mime = ${file_mime},
+        status = ${status || 'pending'},
+        payment_status = ${payment_status || 'pending'},
+        payment_method = ${payment_method || 'pay_on_delivery'},
         updated_at = NOW()
       WHERE id = ${id}
     `

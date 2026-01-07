@@ -29,7 +29,7 @@ async function getDashboardStats() {
     sql`SELECT COUNT(*) as total FROM customers`,
     sql`SELECT 
         SUM(total_amount) as total_revenue,
-        SUM(CASE WHEN order_date >= NOW() - INTERVAL '30 days' THEN total_amount ELSE 0 END) as monthly_revenue
+        SUM(CASE WHEN created_at >= NOW() - INTERVAL '30 days' THEN total_amount ELSE 0 END) as monthly_revenue
         FROM orders WHERE status = 'completed'`,
     sql`SELECT item_name, stock_quantity, low_stock_threshold 
         FROM inventory 
@@ -82,9 +82,9 @@ export default async function AdminDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${Number(stats.revenue.total_revenue || 0).toFixed(2)}</div>
+            <div className="text-2xl font-bold">GH₵{Number(stats.revenue.total_revenue || 0).toFixed(2)}</div>
             <p className="text-xs text-muted-foreground mt-1">
-              ${Number(stats.revenue.monthly_revenue || 0).toFixed(2)} this month
+              GH₵{Number(stats.revenue.monthly_revenue || 0).toFixed(2)} this month
             </p>
           </CardContent>
         </Card>

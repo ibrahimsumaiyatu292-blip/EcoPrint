@@ -18,7 +18,7 @@ interface Order {
   quantity: number
   status: string
   total_amount: string
-  order_date: string
+  created_at: string
   due_date: string
 }
 
@@ -133,7 +133,7 @@ export function OrdersTable({ orders: initialOrders }: { orders: Order[] }) {
                   </TableCell>
                   <TableCell>{order.service_type}</TableCell>
                   <TableCell>{order.quantity}</TableCell>
-                  <TableCell>${Number(order.total_amount).toFixed(2)}</TableCell>
+                  <TableCell>GH₵{Number(order.total_amount).toFixed(2)}</TableCell>
                   <TableCell>
                     <Select value={order.status} onValueChange={(value) => handleStatusChange(order.id, value)}>
                       <SelectTrigger className="w-[130px]">
@@ -149,7 +149,7 @@ export function OrdersTable({ orders: initialOrders }: { orders: Order[] }) {
                       </SelectContent>
                     </Select>
                   </TableCell>
-                  <TableCell>{new Date(order.order_date).toLocaleDateString()}</TableCell>
+                  <TableCell>{new Date(order.created_at).toLocaleDateString()}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
                       <Button asChild variant="ghost" size="icon">

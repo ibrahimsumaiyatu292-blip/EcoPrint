@@ -1,8 +1,13 @@
+-- WARNING: This will delete existing data! Use mainly for initial setup/reset.
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS inventory;
+DROP TABLE IF EXISTS customers;
+
 -- Enable UUID extension if needed, though we seem to use serials based on current code
 -- CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Customers Table
-CREATE TABLE IF NOT EXISTS customers (
+CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     name TEXT,
     email TEXT UNIQUE,
@@ -12,7 +17,7 @@ CREATE TABLE IF NOT EXISTS customers (
 );
 
 -- Orders Table
-CREATE TABLE IF NOT EXISTS orders (
+CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     customer_id INTEGER REFERENCES customers(id),
     order_number TEXT NOT NULL UNIQUE,
@@ -32,12 +37,17 @@ CREATE TABLE IF NOT EXISTS orders (
     delivery_address TEXT,
     due_date DATE,
     
+    -- Payment Info
+    payment_method TEXT DEFAULT 'pay_on_delivery', -- 'pay_on_delivery' or 'paystack'
+    payment_status TEXT DEFAULT 'pending', -- 'pending' or 'paid'
+    payment_reference TEXT,
+
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Inventory Table
-CREATE TABLE IF NOT EXISTS inventory (
+CREATE TABLE inventory (
     id SERIAL PRIMARY KEY,
     item_name TEXT NOT NULL UNIQUE,
     stock_quantity INTEGER DEFAULT 0,
@@ -47,6 +57,6 @@ CREATE TABLE IF NOT EXISTS inventory (
 );
 
 -- Indexes for performance
-CREATE INDEX IF NOT EXISTS idx_orders_customer_id ON orders(customer_id);
-CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
-CREATE INDEX IF NOT EXISTS idx_inventory_low_stock ON inventory(stock_quantity) WHERE stock_quantity <= low_stock_threshold;
+CREATE INDEX idx_orders_customer_id ON orders(customer_id);
+CREATE INDEX idx_orders_status ON orders(status);
+CREATE INDEX idx_inventory_low_stock ON inventory(stock_quantity) WHERE stock_quantity <= low_stock_threshold;

@@ -134,12 +134,12 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Total Spent</p>
-              <p className="text-2xl font-bold text-primary">${totalSpent.toFixed(2)}</p>
+              <p className="text-2xl font-bold text-primary">GH₵{totalSpent.toFixed(2)}</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Average Order Value</p>
               <p className="text-2xl font-bold">
-                ${orders.length > 0 ? (totalSpent / orders.length).toFixed(2) : "0.00"}
+                GH₵{orders.length > 0 ? (totalSpent / orders.length).toFixed(2) : "0.00"}
               </p>
             </div>
           </CardContent>
@@ -197,7 +197,7 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold text-lg">${Number(order.total_amount).toFixed(2)}</div>
+                    <div className="font-bold text-lg">GH₵{Number(order.total_amount).toFixed(2)}</div>
                     {order.due_date && (
                       <div className="text-xs text-muted-foreground">
                         Due: {new Date(order.due_date).toLocaleDateString()}

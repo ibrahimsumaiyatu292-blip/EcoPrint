@@ -152,7 +152,7 @@ export function InventoryTable({ inventory: initialInventory }: { inventory: Inv
                       <p className="text-xs text-orange-600 mt-1">Low stock: threshold {item.low_stock_threshold}</p>
                     )}
                   </TableCell>
-                  <TableCell>${Number(item.unit_price).toFixed(2)}</TableCell>
+                  <TableCell>GH₵{Number(item.unit_price).toFixed(2)}</TableCell>
                   <TableCell>{item.supplier || "N/A"}</TableCell>
                   <TableCell>
                     {item.last_restocked ? new Date(item.last_restocked).toLocaleDateString() : "Never"}

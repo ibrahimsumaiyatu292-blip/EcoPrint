@@ -105,9 +105,13 @@ export async function POST(request: NextRequest) {
         file_mime,
         delivery_address,
         due_date,
+        payment_method,
+        payment_status,
+        payment_reference,
         created_at,
         updated_at
       ) VALUES (
+
         ${customerId},
         ${orderNumber},
         ${body.service_type},
@@ -121,6 +125,9 @@ export async function POST(request: NextRequest) {
         ${savedFileMime},
         ${body.delivery_address || null},
         ${body.due_date || null},
+        ${body.payment_method || 'pay_on_delivery'},
+        ${body.payment_status || 'pending'},
+        ${body.payment_reference || null},
         NOW(),
         NOW()
       ) RETURNING id, order_number

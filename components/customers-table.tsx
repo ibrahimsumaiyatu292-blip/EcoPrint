@@ -93,7 +93,7 @@ export function CustomersTable({ customers: initialCustomers }: { customers: Cus
                   <TableCell>{customer.phone || "N/A"}</TableCell>
                   <TableCell>{customer.company || "N/A"}</TableCell>
                   <TableCell>{customer.order_count}</TableCell>
-                  <TableCell className="font-medium">${Number(customer.total_spent || 0).toFixed(2)}</TableCell>
+                  <TableCell className="font-medium">GH₵{Number(customer.total_spent || 0).toFixed(2)}</TableCell>
                   <TableCell>{new Date(customer.created_at).toLocaleDateString()}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">

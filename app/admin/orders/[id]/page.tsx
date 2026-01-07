@@ -15,8 +15,7 @@ async function getOrder(id: string) {
       o.*,
       c.name as customer_name,
       c.email as customer_email,
-      c.phone as customer_phone,
-      c.company as customer_company
+      c.phone as customer_phone
     FROM orders o
     LEFT JOIN customers c ON o.customer_id = c.id
     WHERE o.id = ${id}
@@ -122,7 +121,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Total Amount</p>
-                <p className="text-lg font-bold text-primary">${Number(order.total_amount).toFixed(2)}</p>
+                <p className="text-lg font-bold text-primary">GH₵{Number(order.total_amount).toFixed(2)}</p>
               </div>
             </div>
 
@@ -156,12 +155,6 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   <p className="font-medium">{order.customer_phone}</p>
                 </div>
               )}
-              {order.customer_company && (
-                <div>
-                  <p className="text-sm text-muted-foreground">Company</p>
-                  <p className="font-medium">{order.customer_company}</p>
-                </div>
-              )}
             </CardContent>
           </Card>
 
@@ -172,7 +165,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             <CardContent className="space-y-3">
               <div>
                 <p className="text-sm text-muted-foreground">Order Date</p>
-                <p className="font-medium">{new Date(order.order_date).toLocaleDateString()}</p>
+                <p className="font-medium">{new Date(order.created_at).toLocaleDateString()}</p>
               </div>
               {order.due_date && (
                 <div>

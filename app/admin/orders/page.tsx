@@ -18,7 +18,7 @@ async function getOrders() {
       c.email as customer_email
     FROM orders o
     LEFT JOIN customers c ON o.customer_id = c.id
-    ORDER BY o.order_date DESC
+    ORDER BY o.created_at DESC
   `
 
   return orders
